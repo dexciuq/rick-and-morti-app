@@ -1,4 +1,4 @@
-package com.dexciuq.rickandmortyapp.ui.theme
+package com.dexciuq.rickandmortyapp.presentation.theme
 
 import android.app.Activity
 import android.os.Build
