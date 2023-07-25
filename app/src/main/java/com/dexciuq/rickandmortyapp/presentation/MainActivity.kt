@@ -1,4 +1,4 @@
-package com.dexciuq.rickandmortyapp
+package com.dexciuq.rickandmortyapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
