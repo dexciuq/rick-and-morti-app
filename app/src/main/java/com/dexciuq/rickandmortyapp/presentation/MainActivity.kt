@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RickAndMortyAppTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Graph.Main.route) {
+                NavHost(navController = navController, startDestination = Graph.NavGraph.route) {
                     navGraph(navController)
                 }
             }

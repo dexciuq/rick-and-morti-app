@@ -28,27 +28,27 @@ sealed class BottomNavigationScreen(
 ) : Screen(route)
 
 sealed class Graph(val route: String) {
-    object Main: Graph("main")
-    object BottomNav : Graph("bottom_nav")
+    object NavGraph: Graph("nav_graph")
+    object BottomNavGraph : Graph("bottom_nav_graph")
 }
 
 fun NavGraphBuilder.bottomNavGraph(navController: NavHostController) {
     navigation(
         startDestination = Screen.Home.route,
-        route = Graph.BottomNav.route
+        route = Graph.BottomNavGraph.route
     ) {
         composable(Screen.Home.route) { HomeScreen(navController) }
-        composable(Screen.About.route) { AboutScreen(navController) }
+        composable(Screen.About.route) { AboutScreen() }
     }
 }
 
 fun NavGraphBuilder.navGraph(navController: NavHostController) {
     navigation(
         startDestination = Screen.Splash.route,
-        route = Graph.Main.route
+        route = Graph.NavGraph.route
     ) {
         composable(Screen.Splash.route) { SplashScreen(navController) }
         composable(Screen.OnBoarding.route) { OnBoardingScreen(navController) }
-        composable(Screen.Main.route) { MainScreen(navController) }
+        composable(Screen.Main.route) { MainScreen() }
     }
 }
