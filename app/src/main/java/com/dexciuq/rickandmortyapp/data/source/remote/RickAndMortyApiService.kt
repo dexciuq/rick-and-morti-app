@@ -1,4 +1,4 @@
-package com.dexciuq.rickandmortyapp.data.source
+package com.dexciuq.rickandmortyapp.data.source.remote
 
 import com.dexciuq.rickandmortyapp.data.model.CharacterDto
 import com.dexciuq.rickandmortyapp.data.model.ResultDto
