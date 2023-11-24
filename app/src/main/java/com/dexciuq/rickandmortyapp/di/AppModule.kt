@@ -10,8 +10,8 @@ import com.dexciuq.rickandmortyapp.data.source.remote.RickAndMortyApiService
 import com.dexciuq.rickandmortyapp.domain.model.Character
 import com.dexciuq.rickandmortyapp.domain.repository.CharacterRepository
 import com.dexciuq.rickandmortyapp.domain.usecase.GetAllCharactersUseCase
-import com.dexciuq.rickandmortyapp.presentation.screen.home.HomeViewModel
-import com.dexciuq.rickandmortyapp.presentation.util.Const
+import com.dexciuq.rickandmortyapp.presentation.screen.main.MainViewModel
+import com.dexciuq.rickandmortyapp.common.Const
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,7 +25,7 @@ val appModule = module {
 
     // data source
     single<CharacterDataSource> {
-        RemoteDataSource(get(), get())
+        RemoteDataSource(apiService = get(), mapper = get())
     }
 
     // mapper
@@ -35,7 +35,7 @@ val appModule = module {
 
     // repository
     single<CharacterRepository> {
-        CharacterRepositoryImpl(get())
+        CharacterRepositoryImpl(characterDataSource = get())
     }
 
     // network
@@ -54,16 +54,16 @@ val appModule = module {
         Retrofit.Builder()
             .addConverterFactory(get())
             .client(get())
-            .baseUrl(Const.API.BASE_URL)
+            .baseUrl(Const.BASE_URL)
             .build()
             .create()
     }
 
     // use case
-    factory { GetAllCharactersUseCase(get()) }
+    single { GetAllCharactersUseCase(characterRepository = get()) }
 
     // presentation
     viewModel {
-        HomeViewModel(get())
+        MainViewModel(getAllCharactersUseCase = get())
     }
 }

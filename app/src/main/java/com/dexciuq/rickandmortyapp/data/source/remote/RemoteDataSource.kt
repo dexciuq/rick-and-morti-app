@@ -15,17 +15,18 @@ class RemoteDataSource(
         apiService.getSingleCharacter(id)
     )
 
-    override suspend fun getAllCharacters(): List<Character> = mapper.transformAll(
-        apiService.getAllCharacters().results
+    override suspend fun getAllCharacters(page: Int): List<Character> = mapper.transformAll(
+        apiService.getAllCharacters(page).results
     )
 
-    override suspend fun getAllCharactersByFilter(filter: Filter): List<Character> = mapper.transformAll(
+    override suspend fun getAllCharactersByFilter(filter: Filter, page: Int): List<Character> = mapper.transformAll(
         apiService.getAllCharactersByFilter(
             name = filter.name,
             status = filter.status,
             species = filter.species,
             type = filter.type,
             gender = filter.gender,
+            page = page
         ).results
     )
 }

@@ -9,7 +9,9 @@ import retrofit2.http.Query
 interface RickAndMortyApiService {
 
     @GET("/api/character")
-    suspend fun getAllCharacters() : ResultDto
+    suspend fun getAllCharacters(
+        @Query("page") page: Int,
+    ) : ResultDto
 
     @GET("/api/character/")
     suspend fun getAllCharactersByFilter(
@@ -18,8 +20,11 @@ interface RickAndMortyApiService {
         @Query("species") species: String?,
         @Query("type") type: String?,
         @Query("gender") gender: String?,
+        @Query("page") page: Int,
     ) : ResultDto
 
     @GET("/api/character/{id}")
-    suspend fun getSingleCharacter(@Path("id") id: Int) : CharacterDto
+    suspend fun getSingleCharacter(
+        @Path("id") id: Int
+    ) : CharacterDto
 }

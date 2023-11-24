@@ -5,6 +5,6 @@ import com.dexciuq.rickandmortyapp.domain.model.Filter
 
 interface CharacterDataSource {
     suspend fun getCharacter(id: Int): Character
-    suspend fun getAllCharacters(): List<Character>
-    suspend fun getAllCharactersByFilter(filter: Filter): List<Character>
+    suspend fun getAllCharacters(page: Int): List<Character>
+    suspend fun getAllCharactersByFilter(filter: Filter, page: Int): List<Character>
 }

@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 class GetAllCharactersByFilterUseCase(
     private val characterRepository: CharacterRepository
 ) {
-    suspend operator fun invoke(filter: Filter) = withContext(Dispatchers.IO) {
-        characterRepository.getAllCharactersByFilter(filter)
+    suspend operator fun invoke(filter: Filter, page: Int) = withContext(Dispatchers.IO) {
+        characterRepository.getAllCharactersByFilter(filter, page)
     }
 }

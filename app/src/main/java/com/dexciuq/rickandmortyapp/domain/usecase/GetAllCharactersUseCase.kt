@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 class GetAllCharactersUseCase(
     private val characterRepository: CharacterRepository
 ) {
-    suspend operator fun invoke() = withContext(Dispatchers.IO) {
-        characterRepository.getAllCharacters()
+    suspend operator fun invoke(page: Int) = withContext(Dispatchers.IO) {
+        characterRepository.getAllCharacters(page)
     }
 }

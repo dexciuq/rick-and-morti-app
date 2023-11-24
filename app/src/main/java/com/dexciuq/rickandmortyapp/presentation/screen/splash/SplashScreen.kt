@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.dexciuq.rickandmortyapp.R
-import com.dexciuq.rickandmortyapp.presentation.navigation.Graph
 import com.dexciuq.rickandmortyapp.presentation.navigation.Screen
 import kotlinx.coroutines.delay
 
@@ -19,7 +18,9 @@ fun SplashScreen(navHostController: NavHostController) {
     LaunchedEffect(Unit) {
         delay(1500)
         navHostController.navigate(Screen.Main.route) {
-            popUpTo(Graph.NavGraph.route)
+            popUpTo(Screen.Splash.route) {
+                inclusive = true
+            }
         }
     }
     Box(
